@@ -86,14 +86,26 @@ const UserList = () => {
       ) : (
         <Flex gap={4} mt="4">
           {data?.map((user) => (
-            <Card maxW="20%" key={user._id}>
+            <Card
+              maxW="20%"
+              key={user._id}
+              boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
+            >
               <CardBody>
-                <Box w="50%" m="auto">
+                <Box
+                  m="auto"
+                  boxSizing="border-box"
+                  height="14rem"
+                  display="flex"
+                  alignItems="center"
+                >
                   <Image
                     src={user.image}
                     alt="Green double couch with wooden legs"
                     borderRadius="lg"
                     m="auto"
+                    maxWidth="100%"
+                    maxHeight="100%"
                   />
                 </Box>
                 <Stack mt="6" spacing="1">

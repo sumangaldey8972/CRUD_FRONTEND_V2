@@ -1,4 +1,4 @@
-import { live_url } from "../../common/api";
+import { local_url } from "../../common/api";
 import {
   ADD_USER_SUCCESS,
   DELETE_USER_SUCCESS,
@@ -17,7 +17,7 @@ export const login_action = (user_credentials) => async (dispatch) => {
   dispatch({ type: LOADING });
   try {
     let response = await axios.post(
-      `${live_url}/authenticate_user`,
+      `${local_url}/authenticate_user`,
       user_credentials
     );
     return dispatch({
@@ -42,7 +42,7 @@ export const add_user_action = (creds, token) => async (dispatch) => {
   dispatch({ type: LOADING });
   try {
     console.log(creds, "------------->");
-    let response = await axios.post(`${live_url}/create_user`, creds, {
+    let response = await axios.post(`${local_url}/create_user`, creds, {
       headers: { token: token },
     });
     return dispatch({
@@ -64,7 +64,7 @@ export const add_user_action = (creds, token) => async (dispatch) => {
 export const get_user_action = (token) => async (dispatch) => {
   dispatch({ type: LOADING });
   try {
-    let response = await axios.get(`${live_url}/user_list`, {
+    let response = await axios.get(`${local_url}/user_list`, {
       headers: { token: token },
     });
     return dispatch({
@@ -85,7 +85,7 @@ export const get_user_action = (token) => async (dispatch) => {
 export const get_user_by_manager = (token, id) => async (dispatch) => {
   dispatch({ type: LOADING });
   try {
-    let response = await axios.get(`${live_url}/user_list?id=${id}`, {
+    let response = await axios.get(`${local_url}/user_list?id=${id}`, {
       headers: { token: token },
     });
     return dispatch({
@@ -107,7 +107,7 @@ export const get_user_by_manager = (token, id) => async (dispatch) => {
 export const get_user_by_id_action = (id) => async (dispatch) => {
   dispatch({ type: LOADING });
   try {
-    let response = await axios.get(`${live_url}/get_user/${id}`);
+    let response = await axios.get(`${local_url}/get_user/${id}`);
     return dispatch({
       type: GET_USER_BY_ID,
       status: response.data.status,
@@ -125,7 +125,7 @@ export const get_user_by_id_action = (id) => async (dispatch) => {
 export const delete_user_action = (token, id) => async (dispatch) => {
   dispatch({ type: LOADING });
   try {
-    let response = await axios.delete(`${live_url}/delete_user/${id}`, {
+    let response = await axios.delete(`${local_url}/delete_user/${id}`, {
       headers: { token: token },
     });
     return dispatch({
@@ -147,7 +147,7 @@ export const delete_user_action = (token, id) => async (dispatch) => {
 export const edit_user_action = (token, data, id) => async (dispatch) => {
   dispatch({ type: LOADING });
   try {
-    let response = await axios.patch(`${live_url}/edit_user/${id}`, data, {
+    let response = await axios.patch(`${local_url}/edit_user/${id}`, data, {
       headers: { token: token },
     });
     console.log("edit response", response);

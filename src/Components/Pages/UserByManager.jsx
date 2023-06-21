@@ -14,6 +14,7 @@ import {
   Button,
   Flex,
   GridItem,
+  Box,
 } from "@chakra-ui/react";
 import { EditIcon, DeleteIcon, ArrowBackIcon } from "@chakra-ui/icons";
 import { useSelector, useDispatch } from "react-redux";
@@ -59,13 +60,21 @@ const UserByManager = () => {
           {data?.map((user) => (
             <Card maxW="20%" key={user._id}>
               <CardBody>
-                <Image
-                  src={user.image}
-                  alt="Green double couch with wooden legs"
-                  borderRadius="lg"
-                  width="40%"
+                <Box
                   m="auto"
-                />
+                  boxSizing="border-box"
+                  height="14rem"
+                  display="flex"
+                  alignItems="center"
+                >
+                  <Image
+                    src={user.image}
+                    alt="Green double couch with wooden legs"
+                    borderRadius="lg"
+                    maxWidth="100%"
+                    maxHeight="100%"
+                  />
+                </Box>
                 <Stack mt="6" spacing="1">
                   <Heading size="md">Name: {user.user_name}</Heading>
                   <Text>Email: {user.user_email}</Text>
